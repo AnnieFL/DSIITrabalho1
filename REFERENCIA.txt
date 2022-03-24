@@ -1,0 +1,24 @@
+USUARIO:
+    - Nome
+    - email
+    - senha
+    - Tipo (admin/jogador)
+    - Data de cadastro
+    - cartas [array]
+    - preferencia [night/light]
+    - vitorias
+    - derrotas
+
+CARTAS: 
+    - Nome
+    - Tipo (criatura/magia)
+    - Data de alteração
+    - Hp
+    - Atk
+    - Preco
+    - Efeito
+    - Trigger
+
+
+Inicio (igual para admin e user)
+Usuario 
