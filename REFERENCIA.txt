@@ -20,5 +20,8 @@ CARTAS:
     - Trigger
 
 
-Inicio (igual para admin e user)
-Usuario 
+Express
+express-session
+nodemon
+nanoid
+ejs
