@@ -2,10 +2,23 @@
 <html lang="en">
 <body  style="text-align: center;">
 
-<form action="users/login" method="post">
+<% if (cadastro) {%>
+    <form action="users/cadastrar" method="post">
+    <input type="text" name="nome" placeholder="Seu nome"><br>
+    <input type="hidden" name="vitorias" value="0">
+    <input type="hidden" name="derrotas" value="0">
+<%} else {%>
+    <form action="users/login" method="post">
+<%}%>
     <input type="email" name="email" placeholder="Seu email"><br>
     <input type="password" name="senha" placeholder="Seu senha"><br>
-    <label for="darkmode">Darkmode? </label><input type="radio" name="darkmode" id="darkmode"><br>
+<% if (cadastro) {%>
+    <label for="darkmode">Darkmode?</label><input type="checkbox" name="dark"><br>
+<%}%>
     <input type="submit" value="Entrar">
 </form>
-<div>Não tem conta? <a href="/cadastro">Cadastre-se</a></div>
+<% if (cadastro) {%>
+    <div>Já tem conta? <a href="/login">Faça login</a></div>
+<%} else {%>
+    <div>Não tem conta? <a href="/login?cadastro=true">Cadastre-se</a></div>
+<%}%>

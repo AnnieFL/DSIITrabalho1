@@ -1,4 +1,6 @@
-const cartas = [];
+const { nanoid } = require('nanoid');
+
+const cartas = require('../json/cartas.json').Cartas;
 
 class InicialController {
     async index(req, res) {
@@ -6,7 +8,23 @@ class InicialController {
     }
     
     async lista(req, res) {
-        res.render('lista', {user: req.session.user});
+        const {user} = req.session;
+        const userCartas = [];
+
+        if (user && user.admin == false) {
+            for (let i=0; i<user.cartas.length; i++) {
+                for (let e=0; e<cartas.length; e++) {
+                    if (user.cartas[i] == cartas[e].id) {
+                        userCartas.push(cartas[e]);
+                    }
+                }
+            }
+            res.render('lista', {user: req.session.user, cartas: userCartas});
+        } else if (!user) {
+            res.redirect('/');
+        } else {
+            res.render('lista', {user: req.session.user, cartas: cartas});
+        }
     }
 
     async detalha(req, res) {
@@ -22,7 +40,13 @@ class InicialController {
     }
 
     async login(req, res) {
-        res.render('login');
+        const {cadastro} = req.query
+        res.render('login', { cadastro: cadastro});
+    }
+
+    async logout(req,res) {
+        req.session.user = null;
+        res.redirect('/');
     }
 }
 

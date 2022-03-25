@@ -7,6 +7,8 @@ const inicialController = new InicialController();
 
 routes.get('/login', inicialController.login);
 
+routes.get('/logout', inicialController.logout);
+
 routes.get("/detalhar/:id", inicialController.detalha);
 
 routes.get("/lista", inicialController.lista);

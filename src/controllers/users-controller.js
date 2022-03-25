@@ -1,11 +1,19 @@
-const users = [];
+const { nanoid } = require('nanoid');
+
+const users = require('../json/users.json').Usuarios;
 
 class UsersController {
     async cadastrar(req, res) {
+        req.body.admin = false;
+        req.body.id = nanoid(8);
+
+        const date =  new Date(); 
+        req.body.data = date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+        req.body.cartas = [];
         const user = req.body;
         users.push(user);
 
-        console.log({users});
+        req.session.user = user;
         res.redirect('/');
     }
 
@@ -19,14 +27,19 @@ class UsersController {
         //VERIFICA SENHA
         if (usuarioEncontrado.senha == senha) {
             req.session.user = usuarioEncontrado;
-            res.send('Usuario e senha confirmados, login com sucesso!');
+            res.redirect('/');
         } else {
             res.send("Senha não confere");
         }
     }
 
     async perfil(req, res) {
-        res.render('perfil', {user: req.session.user, perfil: perfilEncontrado[0]});
+        const {id} = req.params;
+        
+        const perfilEncontrado = users.filter(u => u.id == id);
+        if (perfilEncontrado.length > 0) {
+            res.render('perfil', {user: req.session.user, perfil: perfilEncontrado[0]});
+        }
     }
 }
 

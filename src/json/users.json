@@ -1,0 +1,27 @@
+{
+    "Usuarios": [{
+        "nome": "Annie",
+        "vitorias": 999,
+        "derrotas": 0,
+        "admin": true,
+        "email": "AnnDmin@Nav.com",
+        "senha": "Admin",
+        "id": 1,
+        "dark": "on",
+        "data": "24/04/2022",
+        "cartas": []
+    }, {
+        "nome": "Asd",
+        "vitorias": 32,
+        "derrotas": 13,
+        "admin": false,
+        "email": "asd@tst.com",
+        "senha": "asd",
+        "id": 2,
+        "dark": "off",
+        "data": "24/04/2022",
+        "cartas": [
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+        ]
+    }]
+}

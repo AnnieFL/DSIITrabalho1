@@ -1,7 +1,6 @@
 {
-  "name": "catalogo-filmes",
+  "name": "card-game",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js"
@@ -16,5 +15,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "description": ""
 }

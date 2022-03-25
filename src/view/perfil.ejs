@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <%- include('includes/navbar') %>    
+    <br>
+    <h2>Nome: <%=perfil.nome%><sub style="font-size: 10px;"><%=perfil.email%></sub> <br>Cadastro em: <%=perfil.data%><hr><br>  
+        Vitorias: <%=perfil.vitorias%><br>
+        Derrotas: <%=perfil.derrotas%><br>
+        Nº de Cartas: <%=perfil.cartas.length%>
+    </h2>

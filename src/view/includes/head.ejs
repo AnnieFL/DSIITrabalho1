@@ -4,13 +4,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Black Cards</title>
-    
-        <% if (user) { if (user.dark == true) { %>
-        <link rel='stylesheet' href="/css/darkmain.css" 
-        <% } else { %>
         <link rel="stylesheet" href="/css/main.css">
-        <%}} else { %>
-        <link rel="stylesheet" href="/css/main.css">
+        <% if (user && user.dark == 'on') { %>
+            <link rel='stylesheet' href="/css/darkmain.css" 
         <%}%>
     
+            
     </head>

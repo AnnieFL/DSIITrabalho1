@@ -1,18 +1,17 @@
 <header>
     <% if (user) { %>
-        <h2><a href="/perfil?<%= user.id %>"><%= user.nome %></a><em style="color: gray"><%= user.vitorias%> / <%= user.derrotas%></em></h2>
+        <h2><a href="users/perfil/<%= user.id %>"><%= user.nome %></a><sub style="color: gray">[<%= user.vitorias%> / <%= user.derrotas%>]</sub></h2>
     <%}%>
     <nav>
         <ul>
             <% if (!user) {%>
             <li><a href="/login">LOGIN</a></li>
-            <%}%>
-            <% if (user) {%>
-                <li><a href="/lista"%>Suas Cartas</a></li>
-            <%}%>
-            <% if (user && user.admin) {%>
+            <%} else {%>
+                <li><a href="/lista">Suas Cartas</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <%if (user && user.admin) {%>
                 <li><a href="/criar">⚙️</a></li>
-            <%}%>
+            <%}}%>
         </ul>
     </nav>
 </header>  
