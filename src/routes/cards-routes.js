@@ -13,6 +13,8 @@ routes.get("/detalhar", cardsController.detalha);
 
 routes.get("/lista", cardsController.lista);
 
+routes.get('/bonus', cardsController.bonus);
+
 routes.post("/edita", cardsController.edita);
 
 routes.post("/cria", cardsController.cria);

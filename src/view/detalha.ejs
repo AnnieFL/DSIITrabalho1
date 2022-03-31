@@ -7,31 +7,43 @@
     <%- include('includes/navbar') %>
     <%if (user && user.admin == true) {%>
     <%if (carta) {%>
-        <form action="/cards/edita" method="post">
-            <input type="hidden" name="id" value="<%=carta.id%>">
-            <label for="nome">Nome:</label><input type="text" name="nome" value="<%=carta.nome%>"><br>
-            <label for="descricao">Descricao:</label><input type="text" name="descricao" value="<%=carta.descricao%>"><br>
-            <% if (carta.tipo == 'Criatura') {%>
-                <label for="tipo">Tipo: </label>Criatura <input type="radio" name="tipo" value="Criatura" checked> | Feitico <input type="radio" name="tipo" value="Feitico"><br>
-            <%} else {%>
-                <label for="tipo">Tipo: </label>Criatura <input type="radio" name="tipo" value="Criatura"> | Feitico <input type="radio" name="tipo" value="Feitico" checked><br>
-            <%}%>
-            <label for="hp">HP:</label><input type="number" name="hp" value="<%=carta.hp%>"><br>
-            <label for="hp">ATK:</label><input type="number" name="atk" value="<%=carta.atk%>"><br>
-            <label for="hp">Preco:</label><input type="number" name="preco" value="<%=carta.preco%>"><br>
+        <form class="center" action="/cards/edita" method="post">
+                <table class="bordered" style="margin: auto; height: 250px; width: 175px; background-color: #555;"">
+                <input type="hidden" name="id" value="<%=carta.id%>">
+            <tr style="height: 5%">
+                <% if (carta.tipo == 'Criatura') {%>
+                    <td class='left' style='color:white;'>
+                        C<input type="radio" name="tipo" value="Criatura" checked>|F<input type="radio" name="tipo" value="Feitico">
+                    </td>
+                <%} else {%>
+                    <td>
+                        C<input type="radio" name="tipo" value="Criatura">|F<input type="radio" name="tipo" value="Feitico" checked>
+                    </td>
+                <%}%>
+            <td class='right' style="color: yellow;">G <input class='center' style="width:15%" type="text" name="preco" value="<%=carta.preco%>"></td></tr>
+
+            <tr style="height: 25%;"><td colspan="2" class='bordered center'"><input class='center' type="text" name="nome" value="<%=carta.nome%>"></td></tr>
+            <tr style="height: 10%;"><td class='bordered left 'style="color:greenyellow; width=50%"><input class='center' style="width: 20%;" type="text" name="hp" value="<%=carta.hp%>"> HP</td><td class='bordered right' style="color:red; width: 50%;">ATK <input class='center' style="width: 20%;" type="text" name="atk" value="<%=carta.atk%>"></td></tr>
+            <tr style="height: 60%;"><td colspan='2' class='center bordered'"><input class='center' type="text" name="descricao" value="<%=carta.descricao%>"></td></tr>
+            </table>
             <label for="efeito">Efeito: </label><input type="text" name="efeito" value="<%=carta.efeito.join('; ')%>" placeholder="separar com ;"><br>
             <label for="efeito">Trigger: </label><input type="text" name="trigger" value="<%=carta.trigger.join('; ')%>" placeholder="separar com ;"><br>
-            <input type="submit" value="Criar">
+            <input type="submit" value="Editar">
         </form>
-    <%} else {%>
-    <form action="/cards/cria" method="post">
-        <label for="nome">Nome:</label><input type="text" name="nome"><br>
-        <label for="descricao">Descricao:</label><input type="text" name="descricao"><br>
-        <label for="tipo">Tipo: </label>Criatura <input type="radio" name="tipo" value="Criatura"> | Feitico <input type="radio" name="tipo" value="Feitico"><br>
-        <label for="hp">HP:</label><input type="number" name="hp"><br>
-        <label for="hp">ATK:</label><input type="number" name="atk"><br>
-        <label for="hp">Preco:</label><input type="number" name="preco"><br>
-        <label for="efeito">Efeito: </label><input type="text" name="efeito" placeholder="separar com ;"><br>
+        <%} else {%>
+            <form class='center' action="/cards/cria" method="post">
+                <table class="bordered" style="margin: auto; height: 250px; width: 175px; background-color: #555;"">
+                <tr style="height: 5%">
+                <td class='left' style='color:white;'>
+                C<input type="radio" name="tipo" value="Criatura">|F<input type="radio" name="tipo" value="Feitico">
+                </td>
+                <td class='right' style="color: yellow;">G <input class='center' style="width:15%" type="text" name="preco" ></td></tr>
+    
+                <tr style="height: 25%;"><td colspan="2" class='bordered center'"><input class='center' type="text" name="nome"></td></tr>
+                <tr style="height: 10%;"><td class='bordered left 'style="color:greenyellow; width=50%"><input class='center' style="width: 20%;" type="text" name="hp" > HP</td><td class='bordered right' style="color:red; width: 50%;">ATK <input class='center' style="width: 20%;" type="text" name="atk" ></td></tr>
+                <tr style="height: 60%;"><td colspan='2' class='center bordered'"><input class='center' type="text" name="descricao"></td></tr>
+                </table>
+            <label for="efeito">Efeito: </label><input type="text" name="efeito" placeholder="separar com ;"><br>
         <label for="efeito">Trigger: </label><input type="text" name="trigger" placeholder="separar com ;"><br>
         <input type="submit" value="Criar">
     </form>

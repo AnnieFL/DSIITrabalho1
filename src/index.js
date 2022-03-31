@@ -35,7 +35,7 @@ const usersRoutes = require('./routes/users-routes');
 app.use('/', usersRoutes)
 
 app.use('*', (req, res) => {
-    return res.redirect('/');
+    return res.redirect('/index');
 })
 
 app.listen(3000, () => console.log('Server iniciado na porta 3000'));

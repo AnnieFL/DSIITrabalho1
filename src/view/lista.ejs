@@ -7,6 +7,19 @@
 
     <%- include('includes/navbar') %>    
 
+    <div class="sidebar">
+        <h3>Organizar por:</h3>
+        Nome <a class='nonlink' href="lista?por=nomeAsc">▴</a>
+        <a class='nonlink' href="lista?por=nomeDesc">▾</a><br>
+        Data <a class='nonlink' href="lista?por=dataAsc">▴</a>
+        <a class='nonlink' href="lista?por=dataDesc">▾</a><br>
+        HP <a class='nonlink' href="lista?por=hpAsc">▴</a>
+        <a class='nonlink' href="lista?por=hpDesc">▾</a><br>
+        ATK <a class='nonlink' href="lista?por=atkAsc">▴</a>
+        <a class='nonlink' href="lista?por=atkDesc">▾</a><br>
+        Preço <a class='nonlink' href="lista?por=precoAsc">▴</a>
+        <a class='nonlink' href="lista?por=precoDesc">▾</a>
+      </div>
     <table style="margin: auto;">
     <tr>
         <% for(let i=0; i<cartas.length; i++) {%>
@@ -35,6 +48,7 @@
             <%}%>
     </tr>
     </table>
-    <h1 class="center">
+    <h1 class="center"><%if (user.admin == true) {%>
         <a class='nonlink' href="/cards/detalhar">➕</a>
+        <%}%>
     </h1>

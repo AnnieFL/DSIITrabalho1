@@ -4,6 +4,40 @@ const users = require('../json/users.json').Usuarios;
 
 class UsersController {
     async index(req, res) {
+        const {por} = req.query;
+
+        if (por == "nomeAsc") {
+            users.sort((a, b) => {
+                let na = a.nome.toLowerCase();
+                let nb = b.nome.toLowerCase();
+            
+                if (na < nb) {
+                    return -1;
+                }
+                if (na > nb) {
+                    return 1;
+                }
+                return 0;
+            });
+        } else if (por == "nomeDesc") {
+            users.sort((a, b) => {
+                let na = a.nome.toLowerCase();
+                let nb = b.nome.toLowerCase();
+            
+                if (na > nb) {
+                    return -1;
+                }
+                if (na < nb) {
+                    return 1;
+                }
+                return 0;
+            });
+        } else if (por == "dataAsc") {
+            users.sort((a, b) => a.data - b.data);
+        } else {
+            users.sort((a, b) => b.data - a.data);
+        }
+
         if (req.session.user) {
             const outrosUsers = users.filter(u => u.id != req.session.user.id);
             return res.render('inicio', { user: req.session.user, outrosUsers:outrosUsers});
@@ -79,21 +113,16 @@ class UsersController {
         return res.redirect('/');
     }
 
-    async organiza(req, res) {
-        const {por} = req.params;
+    async bonus(req, res) {
+        const {id} = req.session.user;
 
-        if (por == 'recente') {
-            const datas = [];
-            for (let i = 0; i<users.length; i++) {
-                datas.push(users[i].data);
+        for (let i = 0; i<users.length; i++) {
+            if (users[i].id = req.session.user) {
+                users[i].cartas = req.session.user.cartas;
+                return res.redirect('/');
             }
-
-        } else if (por == 'antigo') {
-
-        } else {
-
         }
-        return res.redirect('/')
+        return res.redirect('/cards/lista');
     }
 }
 

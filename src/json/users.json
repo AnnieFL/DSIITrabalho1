@@ -6,9 +6,9 @@
         "admin": true,
         "email": "AnnDmin@Nav.com",
         "senha": "Admin",
-        "id": 1,
+        "id": "admin",
         "dark": "on",
-        "data": "20220424",
+        "data": "20220228",
         "cartas": []
     }, {
         "nome": "Asd",
@@ -17,11 +17,37 @@
         "admin": false,
         "email": "asd@tst.com",
         "senha": "asd",
-        "id": 2,
+        "id": "asd",
         "dark": "off",
-        "data": "20220424",
+        "data": "20220324",
         "cartas": [
             0, 1, 2, 15, 16, 17, 17, 1, 0, 0
+        ]
+    }, {
+        "nome": "OneTrick",
+        "vitorias": 0,
+        "derrotas": 58,
+        "admin": false,
+        "email": "oneTrick@pony.com",
+        "senha": "pony",
+        "id": 1,
+        "dark": "on",
+        "data": "20220331",
+        "cartas": [
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 15, 15, 15, 15
+        ]
+    }, {
+        "nome": "tst",
+        "vitorias": 10,
+        "derrotas": 5,
+        "admin": false,
+        "email": "tst@tst",
+        "senha": "tst",
+        "id": "tst",
+        "dark": "on",
+        "data": "20220331",
+        "cartas": [
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 15, 15, 15, 15
         ]
     }]
 }

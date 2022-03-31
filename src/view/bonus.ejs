@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('includes/head') %>
+
+<body>
+    <%- include('includes/navbar') %>
+    <%if (user && !user.admin) {%>
+        <h1 class='center'>Você ganhou:</h1>
+            <table class="bordered" style="margin: auto; height: 250px; width: 175px; background-color: #555;"">
+            <tr style="height: 5%">
+                <% if (carta.tipo == 'Criatura') {%>
+                    <td class='left' style='color:white;'>C</td>
+                <%} else {%>
+                    <td class="'left" style="color:white">F</td>
+                <%}%>
+            <td class='right' style="color: yellow;">G <%=carta.preco%></td></tr>
+
+            <tr style="height: 25%;"><td colspan="2" class='bordered center'"><%=carta.nome%></td></tr>
+            <tr style="height: 10%;"><td class='bordered left 'style="color:greenyellow; width=50%"><%=carta.hp%> HP</td><td class='bordered right' style="color:red; width: 50%;">ATK <%=carta.atk%></td></tr>
+            <tr style="height: 60%;"><td colspan='2' class='center bordered'"><%=carta.descricao%></td></tr>
+            </table>
+            <h3 class="center"><button><a class='nonlink' href="/bonus">Aceitar</a></button> <button><a class='nonlink' href='/cards/bonus'>Mais uma!</a></button></h3>
+    <%} else {%>
+        <script type="text/javascript">
+            window.location.href = "/"
+        </script>  
+    <%}%>

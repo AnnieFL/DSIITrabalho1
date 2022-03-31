@@ -1,10 +1,10 @@
 {
     "Cartas": [{
         "id": 0,
-        "nome": "Kuro",
-        "descricao": "Taunt; On summon: casts 3 random spells",
+        "nome": "CartaDiferente1",
+        "descricao": "Provocar; Lança 3 feitiços aleatórios",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 4,
         "atk": 7,
         "preco": 10,
@@ -12,10 +12,10 @@
         "trigger": ["always","onSummon"]
     }, {
         "id": 1,
-        "nome": "Kiri",
-        "descricao": "Taunt; End of turn: Damages card in front",
+        "nome": "CartaDiferente2",
+        "descricao": "Provocar; Fim de turno: Causa dano na carta da frente",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 9,
         "atk": 9,
         "preco": 9,
@@ -23,10 +23,10 @@
         "trigger": ["always","endOfTurn"]
     }, {
         "id": 2,
-        "nome": "Kolrec",
-        "descricao": "Taunt; Moves twice per turn",
+        "nome": "CartaDiferente3",
+        "descricao": "Provocar; Se move duas vezes por turno",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 5,
         "atk": 3,
         "preco": 7,
@@ -34,10 +34,10 @@
         "trigger": ["always","always"]
     }, {
         "id": 3,
-        "nome": "placeholder",
+        "nome": "placeholder1",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -45,10 +45,10 @@
         "trigger": []
     }, {
         "id": 4,
-        "nome": "placeholder",
+        "nome": "placeholder2",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -56,10 +56,10 @@
         "trigger": []
     }, {
         "id": 5,
-        "nome": "placeholder",
+        "nome": "placeholder3",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -67,10 +67,10 @@
         "trigger": []
     }, {
         "id": 6,
-        "nome": "placeholder",
+        "nome": "placeholder4",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -78,10 +78,10 @@
         "trigger": []
     }, {
         "id": 7,
-        "nome": "placeholder",
+        "nome": "placeholder5",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -89,10 +89,10 @@
         "trigger": []
     }, {
         "id": 8,
-        "nome": "placeholder",
+        "nome": "placeholder6",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -100,10 +100,10 @@
         "trigger": []
     }, {
         "id": 9,
-        "nome": "placeholder",
+        "nome": "placeholder7",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -111,10 +111,10 @@
         "trigger": []
     }, {
         "id": 10,
-        "nome": "placeholder",
+        "nome": "placeholder8",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -122,10 +122,10 @@
         "trigger": []
     }, {
         "id": 11,
-        "nome": "placeholder",
+        "nome": "placeholder9",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -133,10 +133,10 @@
         "trigger": []
     }, {
         "id": 12,
-        "nome": "placeholder",
+        "nome": "placeholder0",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -144,10 +144,10 @@
         "trigger": []
     }, {
         "id": 13,
-        "nome": "placeholder",
+        "nome": "placeholder10",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -155,10 +155,10 @@
         "trigger": []
     }, {
         "id": 14,
-        "nome": "placeholder",
+        "nome": "placeholder11",
         "descricao": "--",
         "tipo": "Criatura",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -166,10 +166,10 @@
         "trigger": []
     }, {
         "id": 15,
-        "nome": "Heal",
-        "descricao": "Heals 3 HP",
+        "nome": "Cura",
+        "descricao": "Cura 3 HP",
         "tipo": "Feitico",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 8,
@@ -177,10 +177,10 @@
         "trigger": []
     }, {
         "id": 16,
-        "nome": "Kill",
-        "descricao": "Kills 1 card, at a price...",
+        "nome": "Matar",
+        "descricao": "Mata 1 carta, mas há um preço...",
         "tipo": "Feitico",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 11,
@@ -189,9 +189,9 @@
     }, {
         "id": 17,
         "nome": "Attack",
-        "descricao": "Deals 5 dmg",
+        "descricao": "Causa 5 dmg",
         "tipo": "Feitico",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 7,
@@ -199,10 +199,10 @@
         "trigger": []
     }, {
         "id": 18,
-        "nome": "placeholderSpell",
+        "nome": "placeholderSpell0",
         "descricao": "--",
         "tipo": "Feitico",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
@@ -210,10 +210,10 @@
         "trigger": []
     }, {
         "id": 19,
-        "nome": "placeholderSpell",
+        "nome": "placeholderSpell1",
         "descricao": "--",
         "tipo": "Feitico",
-        "data": "24/03/2022",
+        "data": "20220324",
         "hp": 0,
         "atk": 0,
         "preco": 0,
