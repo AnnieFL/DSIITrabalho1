@@ -28,11 +28,11 @@ app.use(express.static('public'));
 
 
 
-const inicialRoutes = require('./routes/inicial-routes');
-app.use('/', inicialRoutes);
+const cardsRoutes = require('./routes/cards-routes');
+app.use('/cards', cardsRoutes);
 
 const usersRoutes = require('./routes/users-routes');
-app.use('/users', usersRoutes)
+app.use('/', usersRoutes)
 
 app.use('*', (req, res) => {
     return res.redirect('/');

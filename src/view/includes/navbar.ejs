@@ -1,17 +1,21 @@
 <header>
+    <h2 id="nav-title"><a href="/">Black-Snow Cards</a></h2>
     <% if (user) { %>
-        <h2><a href="users/perfil/<%= user.id %>"><%= user.nome %></a><sub style="color: gray">[<%= user.vitorias%> / <%= user.derrotas%>]</sub></h2>
+        <h2><a href="/perfil/<%= user.id %>"><%= user.nome %></a><sub style="color: gray">[<%= user.vitorias%> / <%= user.derrotas%>]</sub></h2>
     <%}%>
     <nav>
         <ul>
             <% if (!user) {%>
-            <li><a href="/login">LOGIN</a></li>
+            <li><a href="/cards/login">LOGIN</a></li>
             <%} else {%>
-                <li><a href="/lista">Suas Cartas</a></li>
-                <li><a href="/logout">Logout</a></li>
-            <%if (user && user.admin) {%>
-                <li><a href="/criar">⚙️</a></li>
-            <%}}%>
+                <%if (user && user.admin) {%>
+                    <li><a href="/cards/lista">Ver Cartas</a></li>
+                    <li><a href="/cards/logout">Logout</a></li>
+                    <li><a href="/cards/criar">⚙️</a></li>
+                <%} else {%>
+                    <li><a href="/cards/lista">Suas Cartas</a></li>
+                    <li><a href="/cards/logout">Logout</a></li>
+                <%}}%>
         </ul>
     </nav>
 </header>  

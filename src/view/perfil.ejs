@@ -7,8 +7,13 @@
 
     <%- include('includes/navbar') %>    
     <br>
-    <h2>Nome: <%=perfil.nome%><sub style="font-size: 10px;"><%=perfil.email%></sub> <br>Cadastro em: <%=perfil.data%><hr><br>  
+    <h2>Nome: <%=perfil.nome%><sub style="font-size: 10px;"><%=perfil.email%></sub> <br>Cadastro em: <%=perfil.data.charAt(6)+perfil.data.charAt(7)+"/"+perfil.data.charAt(4)+perfil.data.charAt(5)+"/"+perfil.data.charAt(0)+perfil.data.charAt(1)+perfil.data.charAt(2)+perfil.data.charAt(3)%><hr><br>  
         Vitorias: <%=perfil.vitorias%><br>
         Derrotas: <%=perfil.derrotas%><br>
         Nº de Cartas: <%=perfil.cartas.length%>
+        <%if (user && perfil.id == user.id) {%>    
+        <hr>
+        Darkmode: <%=perfil.dark%> <a href="/dark"><button>Mudar</button></a>
+        <%}%> 
     </h2>
+    

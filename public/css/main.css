@@ -32,9 +32,28 @@ header a {
 }
 
 header a:hover {
-    color: #04AA6D;
+    color: #999;
 }
 
 sub {
     color:#777;
 }
+
+.nonlink {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.bordered {
+    border: 1px black solid;
+}   
+.left {
+    text-align: left;
+}
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+

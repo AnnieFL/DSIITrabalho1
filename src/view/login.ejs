@@ -3,12 +3,12 @@
 <body  style="text-align: center;">
 
 <% if (cadastro) {%>
-    <form action="users/cadastrar" method="post">
+    <form action="/cadastrar" method="post">
     <input type="text" name="nome" placeholder="Seu nome"><br>
     <input type="hidden" name="vitorias" value="0">
     <input type="hidden" name="derrotas" value="0">
 <%} else {%>
-    <form action="users/login" method="post">
+    <form action="/login" method="post">
 <%}%>
     <input type="email" name="email" placeholder="Seu email"><br>
     <input type="password" name="senha" placeholder="Seu senha"><br>
@@ -18,7 +18,7 @@
     <input type="submit" value="Entrar">
 </form>
 <% if (cadastro) {%>
-    <div>Já tem conta? <a href="/login">Faça login</a></div>
+    <div>Já tem conta? <a href="/cards/login">Faça login</a></div>
 <%} else {%>
-    <div>Não tem conta? <a href="/login?cadastro=true">Cadastre-se</a></div>
+    <div>Não tem conta? <a href="/cards/login?cadastro=true">Cadastre-se</a></div>
 <%}%>

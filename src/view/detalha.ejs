@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('includes/head') %>
+
+<body>
+    <%- include('includes/navbar') %>
+    <%if (user && user.admin == true) {%>
+    <%if (carta) {%>
+        <form action="/cards/edita" method="post">
+            <input type="hidden" name="id" value="<%=carta.id%>">
+            <label for="nome">Nome:</label><input type="text" name="nome" value="<%=carta.nome%>"><br>
+            <label for="descricao">Descricao:</label><input type="text" name="descricao" value="<%=carta.descricao%>"><br>
+            <% if (carta.tipo == 'Criatura') {%>
+                <label for="tipo">Tipo: </label>Criatura <input type="radio" name="tipo" value="Criatura" checked> | Feitico <input type="radio" name="tipo" value="Feitico"><br>
+            <%} else {%>
+                <label for="tipo">Tipo: </label>Criatura <input type="radio" name="tipo" value="Criatura"> | Feitico <input type="radio" name="tipo" value="Feitico" checked><br>
+            <%}%>
+            <label for="hp">HP:</label><input type="number" name="hp" value="<%=carta.hp%>"><br>
+            <label for="hp">ATK:</label><input type="number" name="atk" value="<%=carta.atk%>"><br>
+            <label for="hp">Preco:</label><input type="number" name="preco" value="<%=carta.preco%>"><br>
+            <label for="efeito">Efeito: </label><input type="text" name="efeito" value="<%=carta.efeito.join('; ')%>" placeholder="separar com ;"><br>
+            <label for="efeito">Trigger: </label><input type="text" name="trigger" value="<%=carta.trigger.join('; ')%>" placeholder="separar com ;"><br>
+            <input type="submit" value="Criar">
+        </form>
+    <%} else {%>
+    <form action="/cards/cria" method="post">
+        <label for="nome">Nome:</label><input type="text" name="nome"><br>
+        <label for="descricao">Descricao:</label><input type="text" name="descricao"><br>
+        <label for="tipo">Tipo: </label>Criatura <input type="radio" name="tipo" value="Criatura"> | Feitico <input type="radio" name="tipo" value="Feitico"><br>
+        <label for="hp">HP:</label><input type="number" name="hp"><br>
+        <label for="hp">ATK:</label><input type="number" name="atk"><br>
+        <label for="hp">Preco:</label><input type="number" name="preco"><br>
+        <label for="efeito">Efeito: </label><input type="text" name="efeito" placeholder="separar com ;"><br>
+        <label for="efeito">Trigger: </label><input type="text" name="trigger" placeholder="separar com ;"><br>
+        <input type="submit" value="Criar">
+    </form>
+    <%}} else {%>
+    <script type="text/javascript">
+        window.location.href = "/"
+    </script>    
+    <%}%>

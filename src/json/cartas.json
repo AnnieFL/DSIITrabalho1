@@ -1,6 +1,6 @@
 {
     "Cartas": [{
-        "id": 1,
+        "id": 0,
         "nome": "Kuro",
         "descricao": "Taunt; On summon: casts 3 random spells",
         "tipo": "Criatura",
@@ -11,7 +11,7 @@
         "efeito": ["taunt","3 random spells"],
         "trigger": ["always","onSummon"]
     }, {
-        "id": 2,
+        "id": 1,
         "nome": "Kiri",
         "descricao": "Taunt; End of turn: Damages card in front",
         "tipo": "Criatura",
@@ -22,7 +22,7 @@
         "efeito": ["taunt","dmgInFront"],
         "trigger": ["always","endOfTurn"]
     }, {
-        "id": 3,
+        "id": 2,
         "nome": "Kolrec",
         "descricao": "Taunt; Moves twice per turn",
         "tipo": "Criatura",
@@ -32,6 +32,17 @@
         "preco": 7,
         "efeito": ["taunt","twiceTurn"],
         "trigger": ["always","always"]
+    }, {
+        "id": 3,
+        "nome": "placeholder",
+        "descricao": "--",
+        "tipo": "Criatura",
+        "data": "24/03/2022",
+        "hp": 0,
+        "atk": 0,
+        "preco": 0,
+        "efeito": [],
+        "trigger": []
     }, {
         "id": 4,
         "nome": "placeholder",
@@ -155,17 +166,6 @@
         "trigger": []
     }, {
         "id": 15,
-        "nome": "placeholder",
-        "descricao": "--",
-        "tipo": "Criatura",
-        "data": "24/03/2022",
-        "hp": 0,
-        "atk": 0,
-        "preco": 0,
-        "efeito": [],
-        "trigger": []
-    }, {
-        "id": 16,
         "nome": "Heal",
         "descricao": "Heals 3 HP",
         "tipo": "Feitico",
@@ -176,7 +176,7 @@
         "efeito": ["+3"],
         "trigger": []
     }, {
-        "id": 17,
+        "id": 16,
         "nome": "Kill",
         "descricao": "Kills 1 card, at a price...",
         "tipo": "Feitico",
@@ -187,7 +187,7 @@
         "efeito": ["1kill"],
         "trigger": []
     }, {
-        "id": 18,
+        "id": 17,
         "nome": "Attack",
         "descricao": "Deals 5 dmg",
         "tipo": "Feitico",
@@ -198,7 +198,7 @@
         "efeito": ["5dmg"],
         "trigger": []
     }, {
-        "id": 19,
+        "id": 18,
         "nome": "placeholderSpell",
         "descricao": "--",
         "tipo": "Feitico",
@@ -209,7 +209,7 @@
         "efeito": [],
         "trigger": []
     }, {
-        "id": 20,
+        "id": 19,
         "nome": "placeholderSpell",
         "descricao": "--",
         "tipo": "Feitico",
