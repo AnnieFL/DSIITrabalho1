@@ -88,7 +88,7 @@ class UsersController {
             return res.send(`<body>
             <h1 style='text-align:center;'>Informação faltando. Por favor preencha tudo</h1>
             <script>
-                setTimeout(() => {window.href('/'), 5000);
+                setTimeout(() => {window.href('/'), 2000);
             </script>
             </body>`);            
         }
@@ -99,14 +99,27 @@ class UsersController {
         const {email, senha} = req.body;
         const usuarioEncontrado = users.find(u => u.email == email);
 
-        if (!usuarioEncontrado) return res.redirect('/');
+        if (!usuarioEncontrado) {
+            return res.send(`<body>
+            <h1 style='text-align:center;'>Email inexistente. Por favor, cadastre-se!</h1>
+            <script>
+                setTimeout(() => {window.href('/'), 3000);
+            </script>
+            </body>`);  
+        }
         
         //VERIFICA SENHA
         if (usuarioEncontrado.senha == senha) {
             req.session.user = usuarioEncontrado;
             res.redirect('/');
         } else {
-            res.redirect('/');
+            return res.send(`<body>
+            <h1 style='text-align:center;'>Senha e Email não conferem!</h1>
+            <script>
+                setTimeout(() => {window.href('/'), 3000);
+            </script>
+            </body>`);  
+        }
         }
     }
 
