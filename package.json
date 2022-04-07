@@ -6,7 +6,7 @@
     "dev": "PORT=3000 nodemon src/index.js",
     "start": "PORT=3001 node src/index.js"
   },
-  "author": "Vini",
+  "author": "Annie",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.6",
