@@ -184,14 +184,14 @@ class CardsController {
             //ERRO CASO HAJA INFORMAÇÃO EM BRANCO
             if (req.session.user.dark == "on") {
                 return res.send(`<body style='background-color: #222; color: aliceblue'>
-                <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
+                <h1 style='text-align:center;'>Erro!! Informação faltando</h1>
                 <script>
                     setTimeout(() => {window.location.href = '/cards/lista'}, 3000);
                 </script>
                 </body>`);
             } else {
                 return res.send(`<body>
-                <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
+                <h1 style='text-align:center;'>Erro!! Informação faltando</h1>
                 <script>
                     setTimeout(() => {window.location.href '/cards/lista'}, 3000);
                 </script>
