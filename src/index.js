@@ -40,5 +40,4 @@ app.use('*', (req, res) => {
 
 
 const PORT = process.env.PORT;
-console.log(PORT);
-app.listen(PORT, () => console.log('Server iniciado na porta ${PORT}'));
+app.listen(PORT);
