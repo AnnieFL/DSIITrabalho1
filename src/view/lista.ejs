@@ -26,6 +26,28 @@
             <%if (i%5 == 0 && i!=0) {%>
             </tr><tr>
             <%}%>
+            <%if (deletar) {%>
+                <td  class="bordered">
+                    <table style="height: 250px; width: 175px; background-color: #555;" class="bordered">
+                        <tr style="height: 5%;">
+                            <%if (cartas[i].tipo == "Criatura") {%>
+                                <td class='left' style='color:white;'><b>C</b></td>
+                            <%} else {%>
+                                <td class='left' style='color:white;'><b>F</b></td>
+                            <%}%>
+                                <td class='right' style="color: yellow;">G <%=cartas[i].preco%></td></tr>
+                            
+                        <tr style="height: 25%;"><td colspan="2" class='bordered center'"><%=cartas[i].nome%>
+                        <%if (user.admin == true) {%>
+                            <a class="nonlink" style="color:red" href="/cards/deletar?id=<%=cartas[i].id%>">X</a>
+                        <%}%>
+                        </td></tr>
+                        <tr style="height: 10%;"><td class='bordered left 'style="color:greenyellow; width=50%"><%=cartas[i].hp%> HP</td><td class='bordered right' style="color:red; width: 50%;">ATK <%=cartas[i].atk%></td></tr>
+                        <tr style="height: 60%;"><td colspan='2' class='center bordered'"><%=cartas[i].descricao%></td></tr>
+                    </table>
+                    </td>
+                    
+            <%}%> 
             <td  class="bordered">
             <table style="height: 250px; width: 175px; background-color: #555;" class="bordered">
                 <tr style="height: 5%;">
@@ -49,6 +71,6 @@
     </tr>
     </table>
     <h1 class="center"><%if (user.admin == true) {%>
-        <a class='nonlink' href="/cards/detalhar">➕</a>
+        <a class='nonlink' href="/cards/detalhar">➕</a><a class="nonlink" href="/cards/detalhar?deletar=true">❌</a>
         <%}%>
     </h1>

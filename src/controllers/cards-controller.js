@@ -7,6 +7,7 @@ const cartas = require('../json/cartas.json').Cartas;
 class CardsController {
     
     async lista(req, res) {
+        const {deletar} = req.query;
         const {user} = req.session;
         const userCartas = [];
 
@@ -67,7 +68,7 @@ class CardsController {
                 });
             }
     
-            return res.render('lista', {user: req.session.user, cartas: userCartas});
+            return res.render('lista', {user: req.session.user, cartas: userCartas, deletar: deletar});
         } else if (!user) {
 
             //NÃO ESTÁ LOGADO
