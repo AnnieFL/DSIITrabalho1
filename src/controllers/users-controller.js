@@ -120,7 +120,6 @@ class UsersController {
             </script>
             </body>`);  
         }
-        }
     }
 
     async perfil(req, res) {
