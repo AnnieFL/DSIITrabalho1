@@ -38,4 +38,6 @@ app.use('*', (req, res) => {
     return res.redirect('/index');
 })
 
-app.listen(3000, () => console.log('Server iniciado na porta 3000'));
+
+const PORT = process.env.PORT;
+app.listen(PORT, () => console.log('Server iniciado na porta ${PORT}'));
