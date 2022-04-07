@@ -175,7 +175,7 @@ class CardsController {
             for (let i = 0; i < cartas.length; i++) {
                 if (cartas[i].id == id) {
                     cartas[i] = req.body;
-                    return res.redirect('/');
+                    return res.redirect('/cards/lista');
                 } 
             }
             return res.redirect('/cards/lista');
