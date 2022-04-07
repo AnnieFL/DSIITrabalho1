@@ -101,7 +101,7 @@ class UsersController {
 
         if (!usuarioEncontrado) {
             return res.send(`<body>
-            <h1 style='text-align:center;'>Email inexistente. Por favor, cadastre-se!</h1>
+            <h1 style='text-align:center;'>Senha e Email não conferem!</h1>
             <script>
                 setTimeout(() => {window.href('/'), 3000);
             </script>
