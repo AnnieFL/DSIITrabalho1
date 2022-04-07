@@ -178,7 +178,7 @@ class CardsController {
                     return res.redirect('/');
                 } 
             }
-            return res.redirect('/');
+            return res.redirect('/cards/lista');
         } else {
 
             //ERRO CASO HAJA INFORMAÇÃO EM BRANCO
@@ -232,7 +232,7 @@ class CardsController {
         
         //CRIA CARTA NOVA
         cartas.push(req.body);
-        return res.redirect('/');
+        return res.redirect('/cards/lista');
         } else {
 
             //CASO HAJA INFORMAÇÕES EM BRANCO
