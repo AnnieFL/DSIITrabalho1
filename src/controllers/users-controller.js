@@ -81,14 +81,14 @@ class UsersController {
         return res.send(`<body>
         <h1 style='text-align:center;'>Email já em uso</h1>
         <script>
-            setTimeout(() => {window.location.href = '/'}, 3000);
+            setTimeout(() => {window.location.href = '/login?cadastro=true'}, 3000);
         </script>
         </body>`); 
         }} else {
             return res.send(`<body>
             <h1 style='text-align:center;'>Informação faltando. Por favor preencha tudo</h1>
             <script>
-                setTimeout(() => {window.location.href = '/'}, 3000);
+                setTimeout(() => {window.location.href = '/login?cadastro=true'}, 3000);
             </script>
             </body>`);            
         }
@@ -103,7 +103,7 @@ class UsersController {
             return res.send(`<body>
             <h1 style='text-align:center;'>Senha e Email não conferem!</h1>
             <script>
-                setTimeout(() => {window.location.href = '/'}, 3000);
+                setTimeout(() => {window.location.href = '/login'}, 3000);
             </script>
             </body>`);  
         }
@@ -116,7 +116,7 @@ class UsersController {
             return res.send(`<body>
             <h1 style='text-align:center;'>Senha e Email não conferem!</h1>
             <script>
-                setTimeout(() => {window.location.href = '/'}, 3000);
+                setTimeout(() => {window.location.href = '/login'}, 3000);
             </script>
             </body>`);  
         }
