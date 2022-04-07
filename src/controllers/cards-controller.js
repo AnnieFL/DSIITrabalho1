@@ -186,14 +186,14 @@ class CardsController {
                 return res.send(`<body style='background-color: #222; color: aliceblue'>
                 <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
                 <script>
-                    setTimeout(() => {window.href('/'), 3000);
+                    setTimeout(() => {window.href('/')}, 3000);
                 </script>
                 </body>`);
             } else {
                 return res.send(`<body>
                 <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
                 <script>
-                    setTimeout(() => {window.href('/'), 3000);
+                    setTimeout(() => {window.href('/')}, 3000);
                 </script>
                 </body>`);            
             }
@@ -240,14 +240,14 @@ class CardsController {
                 return res.send(`<body style='background-color: #222; color: aliceblue'>
                 <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
                 <script>
-                    setTimeout(() => {window.href('/'), 3000);
+                    setTimeout(() => {window.href('/')}, 3000);
                 </script>
                 </body>`);
             } else {
                 return res.send(`<body>
                 <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
                 <script>
-                    setTimeout(() => {window.href('/'), 3000);
+                    setTimeout(() => {window.href('/')}, 3000);
                 </script>
                 </body>`);            
             }
