@@ -29,10 +29,10 @@ class CardsController {
                     let na = a.nome.toLowerCase();
                     let nb = b.nome.toLowerCase();
                 
-                    if (na > nb) {
+                    if (na < nb) {
                         return -1;
                     }
-                    if (na < nb) {
+                    if (na > nb) {
                         return 1;
                     }
                     return 0;
@@ -58,10 +58,10 @@ class CardsController {
                     let na = a.nome.toLowerCase();
                     let nb = b.nome.toLowerCase();
                 
-                    if (na < nb) {
+                    if (na > nb) {
                         return -1;
                     }
-                    if (na > nb) {
+                    if (na < nb) {
                         return 1;
                     }
                     return 0;
@@ -121,7 +121,7 @@ class CardsController {
                 });
             }
     
-            return res.render('lista', {user: req.session.user, cartas: cartas});
+            return res.render('lista', {user: req.session.user, cartas: cartas, deletar: deletar});
         }
     }
 
@@ -277,6 +277,14 @@ class CardsController {
         } else {
             res.redirect('/');
         }
+    }
+
+    async deletar(req, res) {
+        const {id} = req.params;
+        console.log(id);
+        const cardsIndex = cartas.findIndex(c => c.id == id);
+        cartas.splice(cardsIndex, 1);
+        return res.redirect('/cards/lista');
     }
 }
 

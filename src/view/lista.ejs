@@ -39,7 +39,7 @@
                             
                         <tr style="height: 25%;"><td colspan="2" class='bordered center'"><%=cartas[i].nome%>
                         <%if (user.admin == true) {%>
-                            <a class="nonlink" style="color:red" href="/cards/deletar?id=<%=cartas[i].id%>">X</a>
+                            <a class="nonlink" href="/cards/deletar/<%=cartas[i].id%>">❌</a>
                         <%}%>
                         </td></tr>
                         <tr style="height: 10%;"><td class='bordered left 'style="color:greenyellow; width=50%"><%=cartas[i].hp%> HP</td><td class='bordered right' style="color:red; width: 50%;">ATK <%=cartas[i].atk%></td></tr>
@@ -47,7 +47,7 @@
                     </table>
                     </td>
                     
-            <%}%> 
+            <%} else {%> 
             <td  class="bordered">
             <table style="height: 250px; width: 175px; background-color: #555;" class="bordered">
                 <tr style="height: 5%;">
@@ -67,10 +67,15 @@
                 <tr style="height: 60%;"><td colspan='2' class='center bordered'"><%=cartas[i].descricao%></td></tr>
             </table>
             </td>
-            <%}%>
+            <%}}%>
     </tr>
     </table>
     <h1 class="center"><%if (user.admin == true) {%>
-        <a class='nonlink' href="/cards/detalhar">➕</a><a class="nonlink" href="/cards/detalhar?deletar=true">❌</a>
+        <a class='nonlink' href="/cards/detalhar">➕</a>
+        <%if (!deletar) {%>
+            <a class="nonlink" href="/cards/lista?deletar=true">❌</a>
+        <%} else {%>
+            <a class="nonlink" href="/cards/lista">✏️</a>        
+            <%}%>
         <%}%>
     </h1>

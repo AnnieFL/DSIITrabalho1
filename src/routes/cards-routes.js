@@ -15,6 +15,8 @@ routes.get("/lista", cardsController.lista);
 
 routes.get('/bonus', cardsController.bonus);
 
+routes.get('/deletar/:id', cardsController.deletar);
+
 routes.post("/edita", cardsController.edita);
 
 routes.post("/cria", cardsController.cria);

@@ -22,7 +22,11 @@
                     <a class='nonlink' href="index?por=nomeAsc">▴</a><a class='nonlink' href="index?por=nomeDesc">▾</a></td>
                 <td style=" width: 50%;">Cadastro em: <%=outrosUsers[i].data.charAt(6)+outrosUsers[i].data.charAt(7)+"/"+outrosUsers[i].data.charAt(4)+outrosUsers[i].data.charAt(5)+"/"+outrosUsers[i].data.charAt(0)+outrosUsers[i].data.charAt(1)+outrosUsers[i].data.charAt(2)+outrosUsers[i].data.charAt(3)%>
                     <a class='nonlink' href="index?por=dataAsc">▴</a><a class='nonlink' href="index?por=dataDesc">▾</a></td>
-                <td><a class='nonlink' href="/" style="float:right;">⚔️</a></td>
+                <td>
+                    <%if (user) {%>
+                        <a class='nonlink' href="/" style="float:right;">⚔️</a>
+                    <%}%>
+                </td>
             </tr>
             <%}%>
         </ul>
