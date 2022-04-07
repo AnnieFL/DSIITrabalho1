@@ -6,6 +6,7 @@ class UsersController {
     async index(req, res) {
         const {por} = req.query;
 
+        //ORGANIZA USUARIOS
         if (por == "nomeAsc") {
             users.sort((a, b) => {
                 let na = a.nome.toLowerCase();
@@ -35,10 +36,12 @@ class UsersController {
         } else if (por == "dataAsc") {
             users.sort((a, b) => a.data - b.data);
         } else {
+            //DEFAULT
             users.sort((a, b) => b.data - a.data);
         }
 
         if (req.session.user) {
+            //USUARIO LOGADO NÃO APARECE NA LISTA DE USERS
             const outrosUsers = users.filter(u => u.id != req.session.user.id);
             return res.render('inicio', { user: req.session.user, outrosUsers:outrosUsers});
         }
@@ -46,13 +49,17 @@ class UsersController {
     }
 
     async cadastrar(req, res) {
+
+        //EVITA INFORMAÇÕES EM BRANCO
         if (!(req.body.nome == "" || req.body.email=="" || req.body.senha == "" || req.body.dark == "")) {
         
+            //EVITA EMAILS REPETIDOS
             if (!users.find(u => u.email == req.body.email)) {
 
                 req.body.admin = false;
                 req.body.id = nanoid(8);
                 
+                //CRIA DATA NA FORMA DE AAAAMMDD
                 const date =  new Date(); 
                 if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
                     req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
@@ -70,6 +77,7 @@ class UsersController {
         req.session.user = user;
         return res.redirect('/');
         } else {
+        //CASO HAJA INFORMAÇÕES EM BRANCO
         return res.send(`<body>
         <h1 style='text-align:center;'>Email já em uso</h1>
         <script>
@@ -133,6 +141,7 @@ class UsersController {
     }
 
     async bonus(req, res) {
+        //PEGA A CARTA ALEATORIA GERADA EM cardsController.bonus E ADICIONA AO "BANCO"
         const {id} = req.session.user;
 
         for (let i = 0; i<users.length; i++) {

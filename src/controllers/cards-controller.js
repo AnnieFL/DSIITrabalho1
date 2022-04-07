@@ -12,6 +12,7 @@ class CardsController {
 
         const {por} = req.query;
         
+        //SE NÃO FOR ADMIN, MOSTRA CARTAS DO USUARIO.
         if (user && user.admin == false) {
             for (let i=0; i<user.cartas.length; i++) {
                 for (let e=0; e<cartas.length; e++) {
@@ -21,6 +22,7 @@ class CardsController {
                 }
             }
 
+        //ORDENAR
             if (por == "nomeAsc") {
                 userCartas.sort((a, b) => {
                     let na = a.nome.toLowerCase();
@@ -67,8 +69,13 @@ class CardsController {
     
             return res.render('lista', {user: req.session.user, cartas: userCartas});
         } else if (!user) {
+
+            //NÃO ESTÁ LOGADO
             return res.redirect('/');
         } else {
+            //SE FOR USUARIO, MOSTRA TODAS AS CARTAS
+
+            //ORDENAR (ADMIN)
             if (por == "nomeAsc") {
                 cartas.sort((a, b) => {
                     let na = a.nome.toLowerCase();
@@ -120,24 +127,29 @@ class CardsController {
     async detalha(req, res) {
         const {id} = req.query
         if (!id) {
+
+            //SE NÃO FOR CARTA ESPECÍFICA, É PARA CRIAR UMA NOVA
             return res.render('detalha', {user: req.session.user, carta: false})
         } else {
+
+            //SE FOR CARTA ESPECÍFICA, É PARA EDITAR
             const {id} = req.query;
             
             const cartaEncontrada = cartas.filter(c => c.id == id);
             if (cartaEncontrada.length > 0) {
-                console.log(cartaEncontrada);
                 return res.render('detalha', {user: req.session.user, carta: cartaEncontrada[0]});
             }
         }
     }
 
     async edita(req, res) {
+
+        //EVITA INFORMAÇÕES EM BRANCO
         if (!(req.body.nome == "" || isNaN(parseFloat(req.body.preco))|| req.body.tipo == "" || req.body.descricao == "" || isNaN(parseFloat(req.body.hp) || isNaN(parseFloat(req.body.atk))))) {
             
             const {id} = req.body;
             
-            
+            //CRIA UMA DATA NA FORMA AAAAMMDD
             const date =  new Date(); 
             if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
                 req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
@@ -149,6 +161,7 @@ class CardsController {
                 req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
             }
             
+            //TRANSFORMA AS STRINGS 'efeito' E 'trigger' EM ARRAYS
             req.body.efeito = req.body.efeito.split(";");
             for (let i = 0; i<req.body.efeito.length; i++) {
                 req.body.efeito[i].trim();
@@ -158,6 +171,7 @@ class CardsController {
                 req.body.trigger[i].trim();
             }
             
+            //EDITA A CARTA
             for (let i = 0; i < cartas.length; i++) {
                 if (cartas[i].id == id) {
                     cartas[i] = req.body;
@@ -166,6 +180,8 @@ class CardsController {
             }
             return res.redirect('/');
         } else {
+
+            //ERRO CASO HAJA INFORMAÇÃO EM BRANCO
             if (req.session.user.dark == "on") {
                 return res.send(`<body style='background-color: #222; color: aliceblue'>
                 <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
@@ -187,9 +203,12 @@ class CardsController {
 
     async cria(req, res) {
         
+        //EVITA INFORMAÇÕES EM BRANCO
         if (!(req.body.nome == "" || isNaN(parseFloat(req.body.preco))|| req.body.tipo == "" || req.body.descricao == "" || isNaN(parseFloat(req.body.hp) || isNaN(parseFloat(req.body.atk))))) {
             
             req.body.id = nanoid(8);
+            
+        //CRIA UMA DATA NA FORMA AAAAMMDD
             const date =  new Date(); 
             if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
             req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
@@ -201,6 +220,7 @@ class CardsController {
             req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
         }
         
+        //TRANSFORMA AS STRINGS 'efeito' E 'trigger' EM ARRAYS
         req.body.efeito = req.body.efeito.split(";");
         for (let i = 0; i<req.body.efeito.length; i++) {
             req.body.efeito[i].trim();
@@ -210,9 +230,12 @@ class CardsController {
             req.body.trigger[i].trim();
         }
         
+        //CRIA CARTA NOVA
         cartas.push(req.body);
         return res.redirect('/');
         } else {
+
+            //CASO HAJA INFORMAÇÕES EM BRANCO
             if (req.session.user.dark == "on") {
                 return res.send(`<body style='background-color: #222; color: aliceblue'>
                 <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
@@ -242,9 +265,11 @@ class CardsController {
     }
 
     async bonus(req,res) {
+        //CRIA UMA CARTA ALEATÓRIA
         const numAleatorio = Math.floor(Math.random()*cartas.length)
         const cartaAleatoria = cartas[numAleatorio].id;
 
+        //ENTREGA A CARTA PARA O USUARIO, CASO ESTEJA LOGADO
         if (req.session.user) {
             req.session.user.cartas.push(cartaAleatoria);
             res.render('bonus', {user: req.session.user, carta: cartas[numAleatorio]});
