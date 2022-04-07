@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "PORT=3000 nodemon src/index.js",
+    "start": "PORT=3001 node src/index.js"
   },
   "author": "Vini",
   "license": "ISC",
