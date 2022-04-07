@@ -133,43 +133,65 @@ class CardsController {
     }
 
     async edita(req, res) {
-        const {id} = req.body;
-        
-        const date =  new Date(); 
-        if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
-            req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
-        } else if (date.getDate() >= 10) {
-            req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+date.getDate();
-        } else if (date.getMonth()+1 >= 10) {
-            req.body.data = date.getFullYear()+(date.getMonth()+1)+"0"+date.getDate();
+        if (!(req.body.nome == "" || isNaN(parseFloat(req.body.preco))|| req.body.tipo == "" || req.body.descricao == "" || isNaN(parseFloat(req.body.hp) || isNaN(parseFloat(req.body.atk))))) {
+            
+            const {id} = req.body;
+            
+            
+            const date =  new Date(); 
+            if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
+                req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
+            } else if (date.getDate() >= 10) {
+                req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+date.getDate();
+            } else if (date.getMonth()+1 >= 10) {
+                req.body.data = date.getFullYear()+(date.getMonth()+1)+"0"+date.getDate();
+            } else {
+                req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
+            }
+            
+            req.body.efeito = req.body.efeito.split(";");
+            for (let i = 0; i<req.body.efeito.length; i++) {
+                req.body.efeito[i].trim();
+            }
+            req.body.trigger = req.body.trigger.split(";");
+            for (let i = 0; i<req.body.trigger.length; i++) {
+                req.body.trigger[i].trim();
+            }
+            
+            for (let i = 0; i < cartas.length; i++) {
+                if (cartas[i].id == id) {
+                    cartas[i] = req.body;
+                    return res.redirect('/');
+                } 
+            }
+            return res.redirect('/');
         } else {
-            req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
+            if (req.session.user.dark == "on") {
+                return res.send(`<body style='background-color: #222; color: aliceblue'>
+                <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
+                <script>
+                    setTimeout(() => {window.href('/'), 5000);
+                </script>
+                </body>`);
+            } else {
+                return res.send(`<body>
+                <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
+                <script>
+                    setTimeout(() => {window.href('/'), 5000);
+                </script>
+                </body>`);            
+            }
         }
-
-        req.body.efeito = req.body.efeito.split(";");
-        for (let i = 0; i<req.body.efeito.length; i++) {
-            req.body.efeito[i].trim();
-        }
-        req.body.trigger = req.body.trigger.split(";");
-        for (let i = 0; i<req.body.trigger.length; i++) {
-            req.body.trigger[i].trim();
-        }
-
-        for (let i = 0; i < cartas.length; i++) {
-            if (cartas[i].id == id) {
-                cartas[i] = req.body;
-                return res.redirect('/');
-            } 
-        }
-        return res.redirect('/');
         
     }
 
     async cria(req, res) {
-        req.body.id = nanoid(8);
-
-        const date =  new Date(); 
-        if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
+        
+        if (!(req.body.nome == "" || isNaN(parseFloat(req.body.preco))|| req.body.tipo == "" || req.body.descricao == "" || isNaN(parseFloat(req.body.hp) || isNaN(parseFloat(req.body.atk))))) {
+            
+            req.body.id = nanoid(8);
+            const date =  new Date(); 
+            if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
             req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
         } else if (date.getDate() >= 10) {
             req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+date.getDate();
@@ -178,7 +200,7 @@ class CardsController {
         } else {
             req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
         }
-
+        
         req.body.efeito = req.body.efeito.split(";");
         for (let i = 0; i<req.body.efeito.length; i++) {
             req.body.efeito[i].trim();
@@ -187,9 +209,26 @@ class CardsController {
         for (let i = 0; i<req.body.trigger.length; i++) {
             req.body.trigger[i].trim();
         }
-
+        
         cartas.push(req.body);
         return res.redirect('/');
+        } else {
+            if (req.session.user.dark == "on") {
+                return res.send(`<body style='background-color: #222; color: aliceblue'>
+                <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
+                <script>
+                    setTimeout(() => {window.href('/'), 5000);
+                </script>
+                </body>`);
+            } else {
+                return res.send(`<body>
+                <h1 style='text-align:center;'>Erro!! Informação incorreta</h1>
+                <script>
+                    setTimeout(() => {window.href('/'), 5000);
+                </script>
+                </body>`);            
+            }
+        }
     }
 
     async login(req, res) {

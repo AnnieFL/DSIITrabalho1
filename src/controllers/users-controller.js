@@ -46,25 +46,44 @@ class UsersController {
     }
 
     async cadastrar(req, res) {
-        req.body.admin = false;
-        req.body.id = nanoid(8);
+        if (!(req.body.nome == "" || req.body.email=="" || req.body.senha == "" || req.body.dark == "")) {
+        
+            if (!users.find(u => u.email == req.body.email)) {
 
-        const date =  new Date(); 
-        if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
-            req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
-        } else if (date.getDate() >= 10) {
-            req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+date.getDate();
-        } else if (date.getMonth()+1 >= 10) {
-            req.body.data = date.getFullYear()+(date.getMonth()+1)+"0"+date.getDate();
-        } else {
-            req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
-        }
-        req.body.cartas = [];
-        const user = req.body;
+                req.body.admin = false;
+                req.body.id = nanoid(8);
+                
+                const date =  new Date(); 
+                if (date.getMonth()+1 >= 10 && date.getDate() >= 10) {
+                    req.body.data = ""+date.getFullYear()+(date.getMonth()+1)+date.getDate();
+                } else if (date.getDate() >= 10) {
+                    req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+date.getDate();
+                } else if (date.getMonth()+1 >= 10) {
+                    req.body.data = date.getFullYear()+(date.getMonth()+1)+"0"+date.getDate();
+                } else {
+                    req.body.data = date.getFullYear()+"0"+(date.getMonth()+1)+"0"+date.getDate();
+                }
+                req.body.cartas = [];
+                const user = req.body;
         users.push(user);
-
+        
         req.session.user = user;
         return res.redirect('/');
+        } else {
+        return res.send(`<body>
+        <h1 style='text-align:center;'>Email já em uso</h1>
+        <script>
+            setTimeout(() => {window.href('/'), 5000);
+        </script>
+        </body>`); 
+        }} else {
+            return res.send(`<body>
+            <h1 style='text-align:center;'>Informação faltando. Por favor preencha tudo</h1>
+            <script>
+                setTimeout(() => {window.href('/'), 5000);
+            </script>
+            </body>`);            
+        }
     }
 
     async login(req, res) {
@@ -72,7 +91,7 @@ class UsersController {
         const {email, senha} = req.body;
         const usuarioEncontrado = users.find(u => u.email == email);
 
-        if (!usuarioEncontrado) return res.send('User nao encontrado');
+        if (!usuarioEncontrado) return res.redirect('/');
         
         //VERIFICA SENHA
         if (usuarioEncontrado.senha == senha) {
